@@ -1,5 +1,5 @@
 # -*- coding=utf-8 -*-
 
-from cse.chinese_summary_extractor import ChineseSummaryExtractor
+from cse.chinese_summary_extraction import ChineseSummaryExtractor
 
 cse = ChineseSummaryExtractor
