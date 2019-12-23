@@ -4,7 +4,9 @@
 A tool for **summary extraction automatically** from **Chinese natural language** text.
 
 - 该文本摘要抽取算法基于 LDA 主题模型，结合 tfidf 统计信息，Lead-3 权重，使用 MMR 作为抽取准则。
-- 基于北大分词器 pkuseg 工具，它性能较高，准确度也较高。  
+- 基于北大分词器 pkuseg 工具，它准确度也较高。  
+- This tools applies LDA, tfidf features, Lead-3 and MMR
+- It is based on pkuseg segmentation tool, which is accurate
 
 ## 使用方法 Usage
 
@@ -48,24 +50,10 @@ print(cse_obj.extract_summary.__doc__)
 
 ## 原理 Principle of algorithm
 
-- 首先基于 pkuseg 工具做分词和词性标注，再使用 tfidf 计算文本的关键词权重，  
-- 关键词提取算法找出碎片化的关键词，然后再根据相邻关键碎片词进行融合，重新计算权重，去除相似词汇。得到的融合的多个关键碎片即为关键短语。  
-    - 短语的 token 长度不超过 12  
-    - 短语中不可出现超过1个虚词  
-    - 短语的两端 token 不可是虚词和停用词  
-    - 短语中停用词数量不可以超过规定个数  
-    - 短语重复度计算添加其中  
-    - 提供仅抽取名词短语功能  
-- 使用预训练好的 LDA 模型，计算文本的主题概率分布，以及每一个候选短语的主题概率分布，得到最终权重  
-- Firstly do word segmentation and part of speech tagging based on pkuseg tool, then use word level tfidf to calculate the keyword weight of the text.  
-- Fuse the adjacent key fragment words, recalculates the weights, and removes the similar words. The fused key fragments are candidate keyphrases. Rules include:  
-    - Token length of phrase can not exceed 20  
-    - There cannot be more than one function word in a phrase  
-    - The token at both ends of the phrase should not be the function word and stop words  
-    - The number of stopwords in a phrase cannot exceed the specified number  
-    - Phrase repetition calculation is added  
-    - Provide only noun phrases extraction parameters  
+- 使用预训练好的 LDA 模型，计算文本的主题概率分布，以及每一个候选短语的主题概率分布，得到最终权重 
+- 同时使用了 tfidf、Lead-3、MMR 
 - Calculating the topic probability distribution of the text and the topic probability distribution of each candidate phrase by using the pre-trained LDA model to obtain the final weight  
+- tfidf, Lead-3, MMR is applied
 
 ## TODO
 - pkuseg 分词器造成的错误
