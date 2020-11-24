@@ -3,6 +3,8 @@
 一个从 **中文自然语言文本**  中抽取 **文本摘要** 的工具  
 A tool for **summary extraction automatically** from **Chinese natural language** text.
 
+### 目前该工具已经迁移至 [**JioNLP**](https://github.com/dongrixinyu/JioNLP)，速度更快，效果更好，还有丰富的其它功能。
+
 - 该文本摘要抽取算法基于 LDA 主题模型，结合 tfidf 统计信息，Lead-3 权重，使用 MMR 作为抽取准则。
 - 基于北大分词器 pkuseg 工具，它准确度也较高。  
 - This tools applies LDA, tfidf features, Lead-3 and MMR
